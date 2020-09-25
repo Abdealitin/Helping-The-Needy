@@ -59,7 +59,7 @@ public class MainActivity extends AppCompatActivity {
 
                     String email = emailField.getText().toString();
                     String pwd = password.getText().toString();
-                    login(email, pwd)
+                    login(email, pwd);
                     openActivity1();
                 }else{
 
@@ -67,9 +67,9 @@ public class MainActivity extends AppCompatActivity {
                 openActivity1();
             }
         });
-        public void login(String, String){
+    }
 
-        }
+    private void login(String email, String pwd) {
     }
 
     public void openActivity2(){
