@@ -41,5 +41,6 @@
         <item>Delhi</item>
         <item>Ujjain</item>
     </string-array>
+    <string name="splash">A SMALL DONATION BECOMES A LOT</string>
 
 </resources>
