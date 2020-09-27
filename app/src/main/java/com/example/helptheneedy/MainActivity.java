@@ -70,6 +70,7 @@ public class MainActivity extends AppCompatActivity {
     }
 
     private void login(String email, String pwd) {
+        System.out.println("Hello");
     }
 
     public void openActivity2(){
