@@ -1,0 +1,48 @@
+{
+  "project_info": {
+    "project_number": "875810475560",
+    "firebase_url": "https://help-the-needy-d4452.firebaseio.com",
+    "project_id": "help-the-needy-d4452",
+    "storage_bucket": "help-the-needy-d4452.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:875810475560:android:b32fc5b312e5b05b0caf1d",
+        "android_client_info": {
+          "package_name": "com.example.helptheneedy"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "875810475560-or3tccp0pdks1nson6j8m16j6q6k1169.apps.googleusercontent.com",
+          "client_type": 1,
+          "android_info": {
+            "package_name": "com.example.helptheneedy",
+            "certificate_hash": "d26e4d4c1437f37a5df2bf4b4452d9e1971c18bd"
+          }
+        },
+        {
+          "client_id": "875810475560-s73mrbnl4931ki01kl4qan92iqg8jhjv.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyANEPtUWISLlsiNCjgSL4w8_DtZ7jk5oxU"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "875810475560-s73mrbnl4931ki01kl4qan92iqg8jhjv.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}

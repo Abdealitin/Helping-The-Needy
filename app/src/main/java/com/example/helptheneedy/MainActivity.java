@@ -11,6 +11,9 @@ import android.widget.Button;
 import android.widget.TextView;
 import android.widget.Toast;
 
+import com.google.android.gms.tasks.OnCompleteListener;
+import com.google.android.gms.tasks.Task;
+import com.google.firebase.auth.AuthResult;
 import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.auth.FirebaseUser;
 
@@ -35,9 +38,10 @@ public class MainActivity extends AppCompatActivity {
             public void onAuthStateChanged(@NonNull FirebaseAuth firebaseAuth) {
                 mUser = firebaseAuth.getCurrentUser();
                 if(mUser != null){
-                    Toast.makeText(MainActivity.this, "Signed In", Toast.LENGTH_LONG).show();
+                    Toast.makeText(MainActivity.this, "Signed In", Toast.LENGTH_SHORT).show();
+                    //openActivity1();
                 }else{
-                    Toast.makeText(MainActivity.this, "Not Signed In", Toast.LENGTH_LONG).show();
+                    Toast.makeText(MainActivity.this, "Not Signed In", Toast.LENGTH_SHORT).show();
                 }
             }
         };
@@ -60,17 +64,25 @@ public class MainActivity extends AppCompatActivity {
                     String email = emailField.getText().toString();
                     String pwd = password.getText().toString();
                     login(email, pwd);
-                    openActivity1();
                 }else{
-
+                    Toast.makeText(MainActivity.this, "Wrong Credentials", Toast.LENGTH_SHORT).show();
                 }
-                openActivity1();
             }
         });
     }
 
     private void login(String email, String pwd) {
-        System.out.println("Hello");
+        mAuth.signInWithEmailAndPassword(email, pwd).addOnCompleteListener(this, new OnCompleteListener<AuthResult>() {
+            @Override
+            public void onComplete(@NonNull Task<AuthResult> task) {
+                if(task.isSuccessful()){
+                    Toast.makeText(MainActivity.this, "Sign In Succesfully!", Toast.LENGTH_LONG).show();
+                    openActivity1();
+                }else{
+                    Toast.makeText(MainActivity.this, "Wrong Credentials!", Toast.LENGTH_LONG).show();
+                }
+            }
+        });
     }
 
     public void openActivity2(){
@@ -86,5 +98,11 @@ public class MainActivity extends AppCompatActivity {
     protected void onStart() {
         super.onStart();
         mAuth.addAuthStateListener(mAuthListener);
+    }
+
+    @Override
+    protected void onStop() {
+        super.onStop();
+        mAuth.signOut();
     }
 }
