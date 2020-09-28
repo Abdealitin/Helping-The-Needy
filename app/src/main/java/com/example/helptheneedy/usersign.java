@@ -97,6 +97,13 @@ public class usersign extends AppCompatActivity implements AdapterView.OnItemSel
         });
 
     }
+
+    @Override
+    protected void onStart() {
+        super.onStart();
+        System.out.print("Hello");
+    }
+
     @Override
     public void onItemSelected(AdapterView<?> parent, View view, int position, long id) {
     }
