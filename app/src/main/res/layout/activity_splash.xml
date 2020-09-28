@@ -8,14 +8,14 @@
 
     <ImageView
         android:id="@+id/imageView2"
-        android:layout_width="177dp"
-        android:layout_height="153dp"
+        android:layout_width="200dp"
+        android:layout_height="200dp"
         android:foregroundGravity="center"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
-        app:srcCompat="@drawable/da" />
+        app:srcCompat="@drawable/appicon" />
 
     <TextView
         android:id="@+id/textView7"
