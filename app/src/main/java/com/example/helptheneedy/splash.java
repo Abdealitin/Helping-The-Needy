@@ -17,12 +17,13 @@ public class splash extends AppCompatActivity {
             @Override
             public void run() {
                 try {
-                    sleep(5000);
+                    sleep(3000);
                 }catch (Exception c){
                     c.printStackTrace();
                 }finally {
                     Intent intent= new Intent(splash.this,MainActivity.class);
                     startActivity(intent);
+                    finish();
                 }
             }
         };thread.start();
