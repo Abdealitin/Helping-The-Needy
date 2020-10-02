@@ -1,9 +1,11 @@
-package com.example.helptheneedy;
+package com.example.helptheneedy.Activities;
 
 import androidx.appcompat.app.AppCompatActivity;
 
 import android.content.Intent;
 import android.os.Bundle;
+
+import com.example.helptheneedy.R;
 
 public class splash extends AppCompatActivity {
 

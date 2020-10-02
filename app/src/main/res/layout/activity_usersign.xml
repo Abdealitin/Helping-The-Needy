@@ -4,7 +4,7 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context=".usersign">
+    tools:context=".Activities.usersign">
 
     <LinearLayout
         android:layout_width="342dp"

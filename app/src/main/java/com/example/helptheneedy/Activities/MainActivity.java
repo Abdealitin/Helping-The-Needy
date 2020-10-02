@@ -1,4 +1,4 @@
-package com.example.helptheneedy;
+package com.example.helptheneedy.Activities;
 
 import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
@@ -11,6 +11,7 @@ import android.widget.Button;
 import android.widget.TextView;
 import android.widget.Toast;
 
+import com.example.helptheneedy.R;
 import com.google.android.gms.tasks.OnCompleteListener;
 import com.google.android.gms.tasks.Task;
 import com.google.firebase.auth.AuthResult;
@@ -39,7 +40,7 @@ public class MainActivity extends AppCompatActivity {
                 mUser = firebaseAuth.getCurrentUser();
                 if(mUser != null){
                     Toast.makeText(MainActivity.this, "Signed In", Toast.LENGTH_SHORT).show();
-                    //openActivity1();
+                    openActivity1();
                 }else{
                     Toast.makeText(MainActivity.this, "Not Signed In", Toast.LENGTH_SHORT).show();
                 }
