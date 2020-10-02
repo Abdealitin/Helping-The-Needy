@@ -42,5 +42,7 @@
         <item>Ujjain</item>
     </string-array>
     <string name="splash">A SMALL DONATION BECOMES A LOT</string>
+    <string name="Food_Items">Food Items Details</string>
+    <string name="Food_Quantity">food quantity</string>
 
 </resources>

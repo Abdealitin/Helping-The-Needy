@@ -11,4 +11,4 @@ public class DonateItemsDetails extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_donate_items_details);
     }
-}
+} 
