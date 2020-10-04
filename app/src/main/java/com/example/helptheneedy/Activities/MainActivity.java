@@ -78,7 +78,7 @@ public class MainActivity extends AppCompatActivity {
             public void onComplete(@NonNull Task<AuthResult> task) {
                 if(task.isSuccessful()){
                     Toast.makeText(MainActivity.this, "Sign In Succesfully!", Toast.LENGTH_LONG).show();
-                    openActivity1();
+                   // openActivity1();
                 }else{
                     Toast.makeText(MainActivity.this, "Wrong Credentials!", Toast.LENGTH_LONG).show();
                 }
