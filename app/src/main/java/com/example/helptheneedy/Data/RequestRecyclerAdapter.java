@@ -13,6 +13,7 @@ import androidx.recyclerview.widget.RecyclerView;
 
 import com.example.helptheneedy.Model.Request;
 import com.example.helptheneedy.R;
+import com.squareup.picasso.Picasso;
 
 import java.util.Date;
 import java.util.List;
@@ -50,6 +51,7 @@ public class RequestRecyclerAdapter extends RecyclerView.Adapter<RequestRecycler
 
         holder.timestamp.setText(formattedDate);
         imageUrl = request.getImage();
+        Picasso.with(context).load(imageUrl).into(holder.image);
 
     }
 

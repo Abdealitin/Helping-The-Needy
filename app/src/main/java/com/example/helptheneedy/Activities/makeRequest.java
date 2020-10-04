@@ -98,41 +98,33 @@ public class makeRequest extends AppCompatActivity {
 
         final String titleVal = mRequestTitle.getText().toString().trim();
         final String descVal =  mRequestDescripton.getText().toString().trim();
-
         if(!TextUtils.isEmpty(titleVal) && !TextUtils.isEmpty(descVal) && mImageUri != null){
             final StorageReference filepath = mStorage.child("RequestImages").child(mImageUri.getLastPathSegment());
-            filepath.putFile(mImageUri).addOnCompleteListener(new OnCompleteListener<UploadTask.TaskSnapshot>() {
-                @Override
-                public void onComplete(@NonNull Task<UploadTask.TaskSnapshot> task) {
-                    if (task.isSuccessful())
-                    {
-                        String downloadUrl = task.getResult().getStorage().getDownloadUrl().toString();
-                        DatabaseReference newReq=mRequestDatabase.push();
-
-                        Map<String, String> dataToSave = new HashMap<>();
-                        dataToSave.put("title", titleVal);
-                        dataToSave.put("desc", descVal);
-                        dataToSave.put("image", downloadUrl);
-                        dataToSave.put("timestamp", String.valueOf(java.lang.System.currentTimeMillis()));
-                        dataToSave.put("userid", mUser.getUid());
-
-                        newReq.setValue(dataToSave);
-                        mProgress.dismiss();
-                        //Toast.makeText(PostActivity.this, "Image uploaded successfully to storage", Toast.LENGTH_SHORT).show();
-
-                    }
-                    /*else{
-                        String message = task.getException().getMessage();
-                        Toast.makeText(PostActivity.this, "Error Occurred", Toast.LENGTH_SHORT).show();
-                    }*/
-                }
-            });
-            /*filepath.putFile(mImageUri).addOnSuccessListener(new OnSuccessListener<UploadTask.TaskSnapshot>() {
+            filepath.putFile(mImageUri).addOnSuccessListener(new OnSuccessListener<UploadTask.TaskSnapshot>() {
                 @Override
                 public void onSuccess(UploadTask.TaskSnapshot taskSnapshot) {
-                    filepath.getDownloadUrl();
-                    Task<Uri> downloadUrl = taskSnapshot.getMetadata().getReference().getDownloadUrl();
-                    DatabaseReference newReq=mRequestDatabase.push();
+                    filepath.getDownloadUrl().addOnSuccessListener(new OnSuccessListener<Uri>() {
+                        @Override
+                        public void onSuccess(Uri uri) {
+                            Uri downloadUrl = uri;
+                            DatabaseReference newReq=mRequestDatabase.push();
+
+                            Map<String, String> dataToSave = new HashMap<>();
+                            dataToSave.put("title", titleVal);
+                            dataToSave.put("desc", descVal);
+                            dataToSave.put("image", downloadUrl.toString());
+                            dataToSave.put("timestamp", String.valueOf(java.lang.System.currentTimeMillis()));
+                            dataToSave.put("userid", mUser.getUid());
+
+                            newReq.setValue(dataToSave);
+                            mProgress.dismiss();
+
+                            startActivity(new Intent(makeRequest.this, homePage.class));
+                            finish();
+                        }
+                    });
+                    //Task<Uri> downloadUrl = taskSnapshot.getStorage().getDownloadUrl();
+                    /*DatabaseReference newReq=mRequestDatabase.push();
 
                     Map<String, String> dataToSave = new HashMap<>();
                     dataToSave.put("title", titleVal);
@@ -142,9 +134,9 @@ public class makeRequest extends AppCompatActivity {
                     dataToSave.put("userid", mUser.getUid());
 
                     newReq.setValue(dataToSave);
-                    mProgress.dismiss();
+                    mProgress.dismiss();*/
                 }
-            });*/
+            });
         }
     }
 }
