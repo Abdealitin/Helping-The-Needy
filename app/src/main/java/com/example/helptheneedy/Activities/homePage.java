@@ -5,10 +5,12 @@ import android.os.Bundle;
 import android.view.View;
 import android.view.Menu;
 import android.widget.Button;
+import android.widget.Toast;
 
 import com.example.helptheneedy.Data.RequestRecyclerAdapter;
 import com.example.helptheneedy.Model.Request;
 import com.example.helptheneedy.R;
+import com.example.helptheneedy.ui.home.HomeFragment;
 import com.google.android.material.floatingactionbutton.FloatingActionButton;
 import com.google.android.material.snackbar.Snackbar;
 import com.google.android.material.navigation.NavigationView;
@@ -51,29 +53,7 @@ public class  homePage extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_home_page);
-        //fabButton = (Button) findViewById(R.id.fab);
 
-        mAuth = FirebaseAuth.getInstance();
-        mUser = mAuth.getCurrentUser();
-
-        mDatabase = FirebaseDatabase.getInstance();
-        mDatabaseReference = mDatabase.getReference().child("Request");
-        mDatabaseReference.keepSynced(true);
-
-        requestList = new ArrayList<>();
-        recyclerView = (RecyclerView) findViewById(R.id.recyclerView);
-        recyclerView.setHasFixedSize(true);
-        recyclerView.setLayoutManager(new LinearLayoutManager(this));
-
-        /*fabButton.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                if(mUser != null && mAuth != null){
-                    startActivity(new Intent(homePage.this, makeRequest.class));
-                    finish();
-                }
-            }
-        });*/
 
         Toolbar toolbar = findViewById(R.id.toolbar);
         setSupportActionBar(toolbar);
@@ -83,9 +63,9 @@ public class  homePage extends AppCompatActivity {
             public void onClick(View view) {
                 /*Snackbar.make(view, "Replace with your own action", Snackbar.LENGTH_LONG)
                         .setAction("Action", null).show();*/
+                Toast.makeText(homePage.this, "Fab Pressed", Toast.LENGTH_SHORT).show();
                 if(mUser != null && mAuth != null){
                     startActivity(new Intent(homePage.this, makeRequest.class));
-                    finish();
                 }
 
             }
@@ -117,7 +97,7 @@ public class  homePage extends AppCompatActivity {
                 || super.onSupportNavigateUp();
     }
 
-    @Override
+    /*@Override
     protected void onStart() {
         super.onStart();
 
@@ -126,7 +106,7 @@ public class  homePage extends AppCompatActivity {
             public void onChildAdded(@NonNull DataSnapshot dataSnapshot, @Nullable String s) {
                 Request request = dataSnapshot.getValue(Request.class);
                 requestList.add(request);
-                requestRecyclerAdapter = new RequestRecyclerAdapter(homePage.this, requestList);
+                requestRecyclerAdapter = new RequestRecyclerAdapter(HomeFragment.class, requestList);
                 recyclerView.setAdapter(requestRecyclerAdapter);
                 requestRecyclerAdapter.notifyDataSetChanged();
             }
@@ -151,5 +131,5 @@ public class  homePage extends AppCompatActivity {
 
             }
         });
-    }
+    }*/
 }
