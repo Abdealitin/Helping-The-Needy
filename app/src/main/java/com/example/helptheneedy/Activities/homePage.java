@@ -53,6 +53,8 @@ public class  homePage extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_home_page);
+        mAuth = FirebaseAuth.getInstance();
+        mUser = mAuth.getCurrentUser();
 
 
         Toolbar toolbar = findViewById(R.id.toolbar);
@@ -64,8 +66,10 @@ public class  homePage extends AppCompatActivity {
                 /*Snackbar.make(view, "Replace with your own action", Snackbar.LENGTH_LONG)
                         .setAction("Action", null).show();*/
                 Toast.makeText(homePage.this, "Fab Pressed", Toast.LENGTH_SHORT).show();
+
                 if(mUser != null && mAuth != null){
                     startActivity(new Intent(homePage.this, makeRequest.class));
+                    finish();
                 }
 
             }

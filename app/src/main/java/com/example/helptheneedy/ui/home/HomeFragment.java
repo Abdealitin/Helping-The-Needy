@@ -27,6 +27,7 @@ import com.google.firebase.database.DatabaseReference;
 import com.google.firebase.database.FirebaseDatabase;
 
 import java.util.ArrayList;
+import java.util.Collections;
 import java.util.List;
 
 public class HomeFragment extends Fragment {
@@ -76,6 +77,7 @@ public class HomeFragment extends Fragment {
             public void onChildAdded(@NonNull DataSnapshot dataSnapshot, @Nullable String s) {
                 Request request = dataSnapshot.getValue(Request.class);
                 requestList.add(request);
+                Collections.reverse(requestList);
                 requestRecyclerAdapter = new RequestRecyclerAdapter(recyclerView.getContext(), requestList);
                 recyclerView.setAdapter(requestRecyclerAdapter);
                 requestRecyclerAdapter.notifyDataSetChanged();
