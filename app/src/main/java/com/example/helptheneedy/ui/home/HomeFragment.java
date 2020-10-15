@@ -4,40 +4,128 @@ import android.os.Bundle;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
-import android.widget.TextView;
 
-import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
 import androidx.fragment.app.Fragment;
-import androidx.lifecycle.Observer;
-import androidx.lifecycle.ViewModelProviders;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
+import androidx.viewpager.widget.ViewPager;
 
-import com.example.helptheneedy.Activities.homePage;
-import com.example.helptheneedy.Data.RequestRecyclerAdapter;
-import com.example.helptheneedy.Model.Request;
+import com.example.helptheneedy.Other_Donate;
 import com.example.helptheneedy.R;
-import com.google.firebase.auth.FirebaseAuth;
-import com.google.firebase.auth.FirebaseUser;
-import com.google.firebase.database.ChildEventListener;
-import com.google.firebase.database.DataSnapshot;
-import com.google.firebase.database.DatabaseError;
-import com.google.firebase.database.DatabaseReference;
-import com.google.firebase.database.FirebaseDatabase;
+import com.example.helptheneedy.Adapters.TabLayoutAdapter;
+import com.example.helptheneedy.your_donate;
+import com.google.android.material.tabs.TabLayout;
 
-import java.util.ArrayList;
-import java.util.Collections;
-import java.util.List;
+public abstract class HomeFragment extends Fragment {
 
-public class HomeFragment extends Fragment {
-    private DatabaseReference mDatabaseReference;
+    View myFragment;
+    ViewPager viewPager;
+    TabLayout tabLayout;
+    public View onCreateView(LayoutInflater inflater, ViewGroup container,
+                             Bundle savedInstanceState) {
+
+        myFragment = inflater.inflate(R.layout.fragment_home, container, false);
+        viewPager =myFragment.findViewById(R.id.viewpage);
+        tabLayout= myFragment.findViewById(R.id.tabLayout);
+        return myFragment;
+    }
+
+    @Override
+    public void onActivityCreated(@Nullable Bundle savedInstanceState) {
+        super.onActivityCreated(savedInstanceState);
+        setUpViewPager(viewPager);
+        tabLayout.setupWithViewPager(viewPager);
+
+        tabLayout.addOnTabSelectedListener(new TabLayout.OnTabSelectedListener() {
+            @Override
+            public void onTabSelected(TabLayout.Tab tab) {
+
+            }
+
+            @Override
+            public void onTabUnselected(TabLayout.Tab tab) {
+
+            }
+
+            @Override
+            public void onTabReselected(TabLayout.Tab tab) {
+
+            }
+        });
+    }
+
+    private void setUpViewPager(ViewPager viewPager) {
+        TabLayoutAdapter adapter = new TabLayoutAdapter(getChildFragmentManager());
+        adapter.addFragment(new your_donate(),"YOUR DONATE");
+        adapter.addFragment(new Other_Donate(), "OTHER DONATE");
+        viewPager.setAdapter(adapter);
+    }
+
+
+
+
+
+
+        /* private RecyclerView mRecyclerView;
+
+    @Override
+    public View onCreateView(LayoutInflater inflater, ViewGroup container,
+                             Bundle savedInstanceState) {
+        View view = inflater.inflate(R.layout.fragment_home, container, false);
+
+        TabLayout tabLayout = (TabLayout) view.findViewById(R.id.tabLayout);
+        tabLayout.addTab(tabLayout.newTab().setText("A"));
+        tabLayout.addTab(tabLayout.newTab().setText("B"));
+        //tabLayout.addTab(tabLayout.newTab().setText("C"));
+
+        final ViewPager viewPager = (ViewPager) view.findViewById(R.id.viewpager);
+
+        mRecyclerView = (RecyclerView) view.findViewById(R.id.recyclerView);
+
+        RecyclerView.LayoutManager mLayoutManager = new LinearLayoutManager(getActivity());
+        mRecyclerView.setLayoutManager(mLayoutManager);
+*/
+/*
+        viewPager.setAdapter(new TabLayoutAdapter
+                (getFragmentManager(), tabLayout.getTabCount()));
+        viewPager.addOnPageChangeListener(new TabLayout.TabLayoutOnPageChangeListener(tabLayout));
+        tabLayout.setOnTabSelectedListener(new TabLayout.OnTabSelectedListener() {
+
+            @Override
+            public void onTabSelected(TabLayout.Tab tab) {
+                viewPager.setCurrentItem(tab.getPosition());
+            }
+
+            @Override
+            public void onTabUnselected(TabLayout.Tab tab) {
+
+            }
+
+            @Override
+            public void onTabReselected(TabLayout.Tab tab) {
+
+            }
+        });
+
+        return view;
+    }
+
+*/
+
+
+
+
+
+
+   /* private DatabaseReference mDatabaseReference;
     private RecyclerView recyclerView;
     private RequestRecyclerAdapter requestRecyclerAdapter;
     private List<Request> requestList;
     private FirebaseDatabase mDatabase;
     private FirebaseUser mUser;
     private FirebaseAuth mAuth;
+
 
     private HomeViewModel homeViewModel;
 
@@ -103,5 +191,5 @@ public class HomeFragment extends Fragment {
 
             }
         });
-    }
+    }*/
 }

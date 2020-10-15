@@ -44,5 +44,7 @@
     <string name="splash">A SMALL DONATION BECOMES A LOT</string>
     <string name="Food_Items">Food Items Details</string>
     <string name="Food_Quantity">food quantity</string>
-
+    <!-- TODO: Remove or change this placeholder text -->
+    <string name="your_donate">Hello Your Donate Items Details </string>
+    <string name="other_donate">Hello other Donate Items Details  </string>
 </resources>
